@@ -28,4 +28,3 @@ class Tenant_model extends Model
         return $this->db->table('tenants')->where('id', $id)->delete();
     }
 }
-?>
