@@ -1,38 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Tenants Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Tenants List</title>
 </head>
-<body class="bg-dark text-light">
-<div class="container py-5">
-  <h2>Tenant Management</h2>
-  <a href="?controller=Tenants&action=add" class="btn btn-warning mb-3">Add Tenant</a>
-
-  <table class="table table-dark table-striped">
-    <thead>
-      <tr>
-        <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Room</th><th>Status</th><th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($tenants as $t): ?>
+<body>
+    <h2>Tenant List</h2>
+    <a href="/tenants/add">Add Tenant</a>
+    <table border="1" cellpadding="6" cellspacing="0">
         <tr>
-          <td><?= $t['id'] ?></td>
-          <td><?= htmlspecialchars($t['name']) ?></td>
-          <td><?= htmlspecialchars($t['email']) ?></td>
-          <td><?= htmlspecialchars($t['phone']) ?></td>
-          <td><?= htmlspecialchars($t['room']) ?></td>
-          <td><?= htmlspecialchars($t['status']) ?></td>
-          <td>
-            <a href="?controller=Tenants&action=edit&id=<?= $t['id'] ?>" class="btn btn-sm btn-primary">Edit</a>
-            <a href="?controller=Tenants&action=delete&id=<?= $t['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Delete this tenant?')">Delete</a>
-          </td>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Room No</th>
+            <th>Rent</th>
+            <th>Move-in Date</th>
+            <th>Actions</th>
         </tr>
-      <?php endforeach; ?>
-    </tbody>
-  </table>
-</div>
+        <?php foreach ($tenants as $tenant): ?>
+        <tr>
+            <td><?= $tenant['id'] ?></td>
+            <td><?= $tenant['name'] ?></td>
+            <td><?= $tenant['contact'] ?></td>
+            <td><?= $tenant['room_no'] ?></td>
+            <td><?= $tenant['rent'] ?></td>
+            <td><?= $tenant['move_in_date'] ?></td>
+            <td>
+                <a href="/tenants/edit/<?= $tenant['id'] ?>">Edit</a> |
+                <a href="/tenants/delete/<?= $tenant['id'] ?>" onclick="return confirm('Delete this tenant?')">Delete</a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
 </body>
 </html>

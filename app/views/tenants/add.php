@@ -1,12 +1,19 @@
-<form method="POST" class="p-4">
-  <h3>Add Tenant</h3>
-  <input class="form-control mb-2" name="name" placeholder="Name" required>
-  <input class="form-control mb-2" name="email" placeholder="Email">
-  <input class="form-control mb-2" name="phone" placeholder="Phone">
-  <input class="form-control mb-2" name="room" placeholder="Room">
-  <select class="form-control mb-2" name="status">
-    <option value="active">Active</option>
-    <option value="inactive">Inactive</option>
-  </select>
-  <button class="btn btn-success">Save</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Tenant</title>
+</head>
+<body>
+    <h2>Add New Tenant</h2>
+    <form action="/tenants/store" method="POST">
+        <label>Name:</label> <input type="text" name="name" required><br>
+        <label>Contact:</label> <input type="text" name="contact" required><br>
+        <label>Room No:</label> <input type="text" name="room_no" required><br>
+        <label>Rent:</label> <input type="number" name="rent" required><br>
+        <label>Move-in Date:</label> <input type="date" name="move_in_date" required><br>
+        <button type="submit">Save</button>
+    </form>
+    <br>
+    <a href="/tenants">Back</a>
+</body>
+</html>
