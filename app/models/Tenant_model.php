@@ -1,43 +1,31 @@
 <?php
-class Tenant_model {
-    private $pdo;
+defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
-    public function __construct() {
-        $this->pdo = new PDO('sqlite:' . __DIR__ . '/../../database/tenants.db');
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->pdo->exec("CREATE TABLE IF NOT EXISTS tenants (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            email TEXT,
-            phone TEXT,
-            room TEXT,
-            status TEXT DEFAULT 'active',
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-        )");
+class Tenant_model extends Model
+{
+    public function get_all()
+    {
+        return $this->db->table('tenants')->get_all();
     }
 
-    public function all() {
-        return $this->pdo->query("SELECT * FROM tenants ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
+    public function get($id)
+    {
+        return $this->db->table('tenants')->where('id', $id)->get();
     }
 
-    public function find($id) {
-        $stmt = $this->pdo->prepare("SELECT * FROM tenants WHERE id=?");
-        $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+    public function insert($data)
+    {
+        return $this->db->table('tenants')->insert($data);
     }
 
-    public function insert($data) {
-        $stmt = $this->pdo->prepare("INSERT INTO tenants (name, email, phone, room, status) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$data['name'], $data['email'], $data['phone'], $data['room'], $data['status']]);
+    public function update_tenant($id, $data)
+    {
+        return $this->db->table('tenants')->where('id', $id)->update($data);
     }
 
-    public function update($id, $data) {
-        $stmt = $this->pdo->prepare("UPDATE tenants SET name=?, email=?, phone=?, room=?, status=? WHERE id=?");
-        $stmt->execute([$data['name'], $data['email'], $data['phone'], $data['room'], $data['status'], $id]);
-    }
-
-    public function delete($id) {
-        $stmt = $this->pdo->prepare("DELETE FROM tenants WHERE id=?");
-        $stmt->execute([$id]);
+    public function delete_tenant($id)
+    {
+        return $this->db->table('tenants')->where('id', $id)->delete();
     }
 }
+?>
