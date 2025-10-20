@@ -11,11 +11,11 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 $config['database'] = array(
     'default' => array(
-        'driver'   => 'mysql',          // ✅ use 'mysql' not 'mysqli'
-        'host'     => 'localhost',
-        'username' => 'jeany',           // default WAMP username
-        'password' => 'jeany',               // default WAMP password is empty
-        'dbname'   => 'dormitory_db',   // ✅ change this to your database name
+        'driver'   => 'mysql',          // ✅ use 'mysql'
+        'host'     => 'localhost',      // local server
+        'username' => 'jeany',          // ✅ your MySQL username
+        'password' => 'jeany',          // ✅ your MySQL password
+        'dbname'   => 'dormitory_db',   // ✅ your database name
         'charset'  => 'utf8',
         'port'     => 3306
     )
