@@ -9,19 +9,16 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 | Example DSN for MySQL: mysql:host=localhost;dbname=your_dbname
 */
 
-function database_config()
-{
-    return [
-        'main' => [
-            'driver'   => 'mysql',
-            'hostname' => 'localhost',
-            'username' => 'jeany',
-            'password' => 'jeany',
-            'database' => 'dormitory_db',
-            'charset'  => 'utf8',
-            'port'     => 3306,
-            'dbprefix' => ''
-        ]
-    ];
-}
+$config['database'] = [
+    'main' => [
+        'driver'   => 'mysql',
+        'hostname' => 'localhost',
+        'username' => 'jeany',
+        'password' => 'jeany',
+        'database' => 'dormitory_db',
+        'charset'  => 'utf8',
+        'port'     => 3306,
+        'dbprefix' => ''
+    ]
+];
 ?>
