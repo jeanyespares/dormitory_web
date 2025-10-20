@@ -7,7 +7,7 @@ class Tenants extends Controller
 
     public function __construct()
     {
-        $this->tenant = new Tenant_model();
+        $this->tenant = new Tenant_model(); // Works now
     }
 
     public function index()
