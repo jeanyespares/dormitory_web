@@ -31,7 +31,7 @@ $autoload['helpers'] = array('url', 'form');
 |--------------------------------------------------------------------------
 | Models that will always be available
 */
-$autoload['models'] = array('Tenant_model');
+$autoload['models'] = array('');
 
 /*
 |--------------------------------------------------------------------------

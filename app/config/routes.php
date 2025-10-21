@@ -2,10 +2,9 @@
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 $router->get('/', 'Tenants::index');
+$router->get('auth/login', 'AuthController@login');
+$router->post('auth/login', 'AuthController@login');
+$router->get('auth/register', 'AuthController@register');
+$router->post('auth/register', 'AuthController@register');
+$router->get('auth/logout', 'AuthController@logout');
 
-$router->get('/tenants', 'Tenants::index');
-$router->get('/tenants/add', 'Tenants::add');
-$router->post('/tenants/store', 'Tenants::store');
-$router->get('/tenants/edit/(:num)', 'Tenants::edit/$1');
-$router->post('/tenants/update/(:num)', 'Tenants::update/$1');
-$router->get('/tenants/delete/(:num)', 'Tenants::delete/$1');
